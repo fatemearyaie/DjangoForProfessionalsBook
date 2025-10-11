@@ -1,0 +1,23 @@
+services:
+  web:
+    image: python:3.12
+    command: python /code/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - /c/Users/Fateme/Documents/DjangoForProfessionalsBook/ch3-postgresql:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456789
+      POSTGRES_DB: MY_DB
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data: {}

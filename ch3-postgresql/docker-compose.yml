@@ -1,16 +1,16 @@
 services:
   web:
     image: python:3.12
-    command: python /code/manage.py runserver 0.0.0.0:8000
+    command: sh -c "pip install -r /code/requirements.txt && python /code/manage.py runserver 0.0.0.0:8000"
     volumes:
-      - /c/Users/Fateme/Documents/DjangoForProfessionalsBook/ch3-postgresql:/code
+      - ./:/code
     ports:
       - 8000:8000
     depends_on:
       - db
 
   db:
-    image: postgres:13
+    image: postgres:15
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
       POSTGRES_USER: postgres

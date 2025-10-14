@@ -1,6 +1,12 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-from django.urls import reverse
+from django.urls import reverse,resolve
+from .forms import CostumUserCreationForm
+from .views import SignUpView
+
+
+
+
 # Create your tests here.
 class CostumUserTests(TestCase):
     def test_create_user(self):
@@ -35,3 +41,10 @@ class SignUpPageTests(TestCase): # new
         self.assertTemplateUsed(self.response, "registration/signup.html")
         self.assertContains(self.response, "Sign Up")
         self.assertNotContains(self.response, "Hi there! I should not be on the page.")
+    def test_signup_form(self): # new
+        form = self.response.context.get("form")
+        self.assertIsInstance(form, CostumUserCreationForm)
+        self.assertContains(self.response, "csrfmiddlewaretoken")
+    def test_signup_view(self): # new
+        view = resolve("/accounts/signup/")
+        self.assertEqual(view.func.__name__, SignUpView.as_view().__name__)

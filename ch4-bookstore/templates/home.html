@@ -1,17 +1,6 @@
-{% extends 'base.html' %}
-
-{% block title %}home{% endblock title %}
-
-{% block content %}
-{% if user.is_authenticated %}
-<p> hi dear {{ user.username }}</p>
-<form method="post" action="{% url 'logout' %}">
-    {% csrf_token %}
-    <button type="submit">Log Out</button>
-</form>
-{% else %}
-<p>you are not logged in</p>
-<a href="{% url 'login' %}"> LogIn</a>
- <a href="{% url 'signup' %}">Sign Up</a>
-{% endif %}
-{% endblock content %}
+{% extends "base.html" %}
+ {% load static %}
+ {% block title %}Home{% endblock title %}
+ {% block content %}
+ <img class="bookcover" src="{% static 'images/djangoforpro.png' %}">
+ {% endblock content %}

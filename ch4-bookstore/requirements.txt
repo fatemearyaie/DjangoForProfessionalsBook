@@ -6,3 +6,5 @@ tzdata==2025.2
 django-crispy-forms
 crispy-bootstrap5
 django-allauth
+environs
+dj-database-url

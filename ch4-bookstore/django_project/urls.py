@@ -23,6 +23,6 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('pages/', include('pages.urls')),
     path('', HomePageView.as_view(), name='home'),
-    path('books/', include("books.urls"))
+    path('books/', include("books.urls")),
     
 ]

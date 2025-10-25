@@ -8,3 +8,4 @@ crispy-bootstrap5
 django-allauth
 environs
 dj-database-url
+pillow

@@ -18,4 +18,4 @@ class BookDetailView(LoginRequiredMixin,PermissionRequiredMixin, DetailView):
 class SearchResultListView(ListView):
     model = Book
     template_name = 'books/search_results.html'
-    context_object_name = 'book_result'
+    context_object_name = 'book_list'

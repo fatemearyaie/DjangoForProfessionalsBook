@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'allauth', 
     'allauth.account',
+    'debug_toolbar',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage" 
 ROOT_URLCONF = 'django_project.urls'
@@ -160,3 +162,8 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 
 DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"
+
+
+import socket
+hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]

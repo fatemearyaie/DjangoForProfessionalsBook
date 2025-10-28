@@ -9,3 +9,4 @@ django-allauth
 environs
 dj-database-url
 pillow
+django-debug-toolbar

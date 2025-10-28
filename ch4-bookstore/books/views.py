@@ -8,7 +8,7 @@ from django.db.models import Q
 
 
 # Create your views here.
-class BookListView(LoginRequiredMixin,PermissionRequiredMixin,ListView):
+class BookListView(LoginRequiredMixin,ListView):
     model = Book
     template_name = 'books/book_list.html'
     context_object_name = 'book_list'
